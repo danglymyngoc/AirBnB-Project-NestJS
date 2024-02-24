@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, Res, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, Res, Query, UseGuards, Put, Request, UploadedFile, UploadedFiles } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
-import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import signUpDTO from 'src/auth/dto/signUp.dto';
+import { FileUploadDto } from './dto/fileUpload.dto';
 
 @ApiTags("User")
 @Controller('user')
@@ -56,16 +58,49 @@ export class UserController {
         const data = await this.userService.getUserDetail(id)
         res.status(data.statusCode).json(data)
     }
- 
 
-  // @Post("/upload")
-  // @UseInterceptors(FileInterceptor(
-  //   storage: diskStorage({
-  //     destination: process.cwd() + "/public/img",
-  //     filename: (req, file, callback) => {
-  //       callback(null, new Date().getTime() + ``)
-  //     }
-  //   })
-  // ))
-  // upload()
+    @UseGuards(AuthGuard("jwt"))
+    @ApiBearerAuth()
+    @ApiBody({type: signUpDTO})
+    @ApiParam({name: "id", required: true})
+    @Put("update-user-info/:id")
+    async updateUserInfo(
+      @Request() req,
+      @Param("id") id,
+      @Res() res,
+      @Body() body: signUpDTO): Promise<any>{
+      const data = await this.userService.updateUserInfo(body, req, id)
+        res.status(data.statusCode).json(data)
+    }
+
+    @UseGuards(AuthGuard("jwt"))
+    @ApiBearerAuth()
+    @ApiParam({name: "id", required: true})
+    @Delete("/delete-user/:id")
+    async deleteUser(
+      @Res() res,
+      @Param("id") id,
+      @Request() req
+      ): Promise<any>{
+        const data = await this.userService.deleteUser(req, id)
+        res.status(data.statusCode).json(data)
+    }
+
+    @UseGuards(AuthGuard("jwt"))
+    @ApiBearerAuth()
+    @ApiConsumes('multipart/form-data')
+    @ApiBody({type: FileUploadDto})
+    @UseInterceptors(FileInterceptor("file"))
+    @Post("/upload-avatar")
+    async uploadAvatar(
+      @UploadedFile("file") file: Express.Multer.File,
+      @Request() req,
+      @Res() res,
+      
+      ): Promise<any>{
+      const data = await this.userService.uploadAvatar(req, file)
+      res.status(data.statusCode).json(data)
+    }
+
+
 }

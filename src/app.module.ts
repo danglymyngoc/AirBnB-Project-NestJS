@@ -4,7 +4,8 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { CommentModule } from './comment/comment.module';
+
+import { LocationModule } from './location/location.module';
 
 
 @Module({
@@ -14,7 +15,7 @@ import { CommentModule } from './comment/comment.module';
   }),
   UserModule,
   AuthModule,
-  CommentModule],
+  LocationModule],
   controllers: [AppController],
   providers: [AppService],
 })
