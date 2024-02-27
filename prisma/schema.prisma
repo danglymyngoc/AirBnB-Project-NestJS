@@ -22,14 +22,14 @@ model BinhLuan {
 }
 
 model DatPhong {
-  id            Int        @id @default(autoincrement())
-  ma_phong      Int?
-  ngay_den      String?    @db.VarChar(200)
-  ngay_di       String?    @db.VarChar(200)
-  so_luong_khac Int?
-  ma_nguoi_dat  Int?
-  Phong         Phong?     @relation(fields: [ma_phong], references: [id], onDelete: Cascade, map: "DatPhong_ibfk_1")
-  NguoiDung     NguoiDung? @relation(fields: [ma_nguoi_dat], references: [id], onDelete: Cascade, map: "DatPhong_ibfk_2")
+  id             Int        @id @default(autoincrement())
+  ma_phong       Int?
+  ngay_den       String?    @db.VarChar(200)
+  ngay_di        String?    @db.VarChar(200)
+  so_luong_khach Int?
+  ma_nguoi_dat   Int?
+  Phong          Phong?     @relation(fields: [ma_phong], references: [id], onDelete: Cascade, map: "DatPhong_ibfk_1")
+  NguoiDung      NguoiDung? @relation(fields: [ma_nguoi_dat], references: [id], onDelete: Cascade, map: "DatPhong_ibfk_2")
 
   @@index([ma_nguoi_dat], map: "ma_nguoi_dat")
   @@index([ma_phong], map: "ma_phong")

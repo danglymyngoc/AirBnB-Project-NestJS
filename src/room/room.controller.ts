@@ -51,7 +51,7 @@ export class RoomController {
 
     @ApiParam({name: "id", description: "Id of room", required: true})
     @Get("/detail/:id")
-    async getLRoomDetail(
+    async getRoomDetail(
       @Res() res,
       @Param("id") id
       ): Promise<any>{
