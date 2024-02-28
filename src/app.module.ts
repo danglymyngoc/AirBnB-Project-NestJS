@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { LocationModule } from './location/location.module';
 import { RoomModule } from './room/room.module';
 import { BookRoomModule } from './book-room/book-room.module';
+import { CommentModule } from './comment/comment.module';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { BookRoomModule } from './book-room/book-room.module';
   AuthModule,
   LocationModule,
   RoomModule,
-  BookRoomModule],
+  BookRoomModule,
+  CommentModule],
   controllers: [AppController],
   providers: [AppService],
 })
