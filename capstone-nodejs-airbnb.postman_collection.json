@@ -1,0 +1,1201 @@
+{
+	"info": {
+		"_postman_id": "406cb845-a885-44ff-80f7-c5f8dacebfc9",
+		"name": "capstone-nodejs-airbnb",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) in \"Tests\" to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31299828"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "get list user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/get-list-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"get-list-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/user/detail/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagination list user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/pagination/1/3?filter=user1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"pagination",
+								"1",
+								"3"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "yyu",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "user1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search user by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/search?userName=user1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"search"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "user1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4Njc1MDc3LCJleHAiOjE3MDg2NzUxMzd9.nYZSKr3nZsO6lDjqvxfj6vrdBKzRLq3zMG8-k-MXHs4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"user1\",\r\n  \"email\": \"user11@gmail.com\",\r\n  \"pass_word\": \"12345\",\r\n  \"phone\": \"12345\",\r\n  \"birth_day\": \"01/01/2024\",\r\n  \"gender\": \"male\",\r\n  \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/update-user-info/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"update-user-info",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InVzZXI0QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NzYyNzg2LCJleHAiOjE3MDg3NjI4NDZ9.ikhQ9A5HAReftTvao6wk9u3IIDJnq0EEzTJvuza_EXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/delete-user/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"delete-user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODcxMDQ1NSwiZXhwIjoxNzA4NzEwNTE1fQ.jcT20M_wnzFiwUzIZ51rkMzUZTKGeIRJ47D0kyCvM9g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1eebb4f6-d9b2-4a40-a3df-6801eab7e9bd"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/upload-avatar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"upload-avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "sign up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"user4\",\n    \"email\":\"user4@gmail.com\",\n    \"pass_word\":\"1234\",\n    \"phone\":\"1234\",\n    \"birth_day\":\"01/01/2024\",\n    \"gender\":\"female\",\n    \"role\":\"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"user4@gmail.com\",\n    \"pass_word\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signin"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "post location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InVzZXI0QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NzU4MDc5LCJleHAiOjE3MDg3NTgxMzl9.LpT_g29vkOPM_udWdRQxLK_Wqq5VvwB3NyRT2A1a3SM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_vi_tri\":\"quan 3\",\r\n    \"tinh_thanh\":\"Tp. Ho Chi Minh\",\r\n    \"quoc_gia\":\"viet nam\",\r\n    \"hinh_anh\":\"https://lp-cms-production.imgix.net/2021-01/shutterstockRF_718619590.jpg\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/location/post-location",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"post-location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagination list location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/location/pagination/1/3?filter=quan 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"pagination",
+								"1",
+								"3"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "quan 1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/get-list-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"get-list-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get location detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/location/detail/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODc3NzY1MCwiZXhwIjoxNzA4Nzc3NzEwfQ.TmbLBIlUUTqqZ_relbyvVDdxu9HgQfFWeJa1yYiw2z0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_vi_tri\":\"quan 2\",\r\n    \"tinh_thanh\":\"Tp. Ho Chi Minh\",\r\n    \"quoc_gia\":\"viet nam\",\r\n    \"hinh_anh\":\"https://lp-cms-production.imgix.net/2021-01/shutterstockRF_718619590.jpg\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/location/update-location/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"update-location",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJlbWFpbCI6InVzZXI0QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4Nzc4MjIzLCJleHAiOjE3MDg3NzgyODN9.IVVyHDv336OeCrheKhn3Bg0gnFMZs07E7bc629irPkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/location/delete-location/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"delete-location",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload location image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODc4MDkxNywiZXhwIjoxNzA4NzgwOTc3fQ.wug2l7jpBlkNq7oP9tbxZs8G7qEoQJDEn4PMbd7lxVE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1eebb4f6-d9b2-4a40-a3df-6801eab7e9bd"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/location/upload-location-image/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"upload-location-image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "post room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODk1Mzc1NSwiZXhwIjoxNzA4OTUzODE1fQ.y2mZBPn26hRoUiio5ImB-cbmlnjLFwiF80vmMEDFOR4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_phong\":\"room 1\",\r\n    \"khach\": 2,\r\n    \"phong_ngu\": 1,\r\n    \"giuong\": 1,\r\n    \"phong_tam\": 1,\r\n    \"mo_ta\": \"des 1\",\r\n    \"gia_tien\": 10,\r\n    \"may_giat\": false,\r\n    \"ban_la\": false,\r\n    \"tivi\": true,\r\n    \"dieu_hoa\": true,\r\n    \"wifi\": true,\r\n    \"bep\": false,\r\n    \"do_xe\": true,\r\n    \"ho_boi\": false,\r\n    \"ban_ui\": false,\r\n    \"hinh_anh\": \"\",\r\n    \"ma_vi_tri\": 1\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room/post-room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"post-room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagination list room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/room/pagination/1/3?filter=room 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"pagination",
+								"1",
+								"3"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "room 1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/room/get-list-room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"get-list-room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get room detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/room/detail/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get room by location",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/room/get-room-by-location?idLocation=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"get-room-by-location"
+							],
+							"query": [
+								{
+									"key": "idLocation",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODk1NTc3OCwiZXhwIjoxNzQwNTEzMzc4fQ.Yd0cJmkDELpwlOPIMoBKkw4Ro7uLQdBtHU7Kf-GMxLY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_phong\":\"room 4\",\r\n    \"khach\": 2,\r\n    \"phong_ngu\": 1,\r\n    \"giuong\": 1,\r\n    \"phong_tam\": 1,\r\n    \"mo_ta\": \"des 4\",\r\n    \"gia_tien\": 10,\r\n    \"may_giat\": false,\r\n    \"ban_la\": false,\r\n    \"tivi\": true,\r\n    \"dieu_hoa\": true,\r\n    \"wifi\": true,\r\n    \"bep\": false,\r\n    \"do_xe\": true,\r\n    \"ho_boi\": false,\r\n    \"ban_ui\": false,\r\n    \"hinh_anh\": \"\",\r\n    \"ma_vi_tri\": 1\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room/update-room/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"update-room",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODk1NTY2MiwiZXhwIjoxNzA4OTU1NzIyfQ.ZS1X3aF-IyiGiMJ34tUtgFlzdW8WuVx4PLTE765MXQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/room/delete-room/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"delete-room",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload room image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODk1NjY2OSwiZXhwIjoxNzQwNTE0MjY5fQ.h-6qin4MNKbpaSrl1WGCZamZPuVXMUWss6HxWbFOPdE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1eebb4f6-d9b2-4a40-a3df-6801eab7e9bd"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/room/upload-room-image/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"upload-room-image",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book Room",
+			"item": [
+				{
+					"name": "post booking info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTAyODIzMywiZXhwIjoxNzQwNTg1ODMzfQ.GcTeLbT3MXW6OPBz0-5iH4g8pST2opicQVh5zsbwdoU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_phong\": 2,\r\n    \"ngay_den\":\"02-01-2024\",\r\n    \"ngay_di\":\"04-01-2024\",\r\n    \"so_luong_khach\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/book-room/post-booking-info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book-room",
+								"post-booking-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list book room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/book-room/get-list-book-room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book-room",
+								"get-list-book-room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get book room detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book-room/detail/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book-room",
+								"detail",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get book room info by user id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book-room/get-book-room-info-by-user/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book-room",
+								"get-book-room-info-by-user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book room info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTAzMDg1MCwiZXhwIjoxNzQwNTg4NDUwfQ.aExYWuACOiRs_owDmSopsePDGxFIraHEG4W3iF0A9eQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_phong\": 1,\r\n    \"ngay_den\": \"03-01-2024\",\r\n    \"ngay_di\": \"04-01-2024\",\r\n    \"so_luong_khach\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/book-room/update-book-room-info/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book-room",
+								"update-book-room-info",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete book room info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTAzMjUyOCwiZXhwIjoxNzQwNTkwMTI4fQ.5QgtsgKzvFulrMXnQtGkEZemwGjp8YoVeejiqC98vdU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/book-room/delete-book-room-info/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book-room",
+								"delete-book-room-info",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "add comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTEwMjgzNywiZXhwIjoxNzQwNjYwNDM3fQ.5IdkIJGpAnblDJ3i_JApR38SpetUZ4S9Sg1wM4jQ5X0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"ma_phong\": 1,\r\n   \"ngay_binh_luan\":\"02-01-2024\",\r\n   \"noi_dung\":\"phong dep\",\r\n   \"sao_binh_luan\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comment/add-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"add-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/comment/get-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"get-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comment by room id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NTI1OTA1LCJleHAiOjE3MDg1MjU5NjV9.9Sb8CFC-50R-rrIwod668yJxOyw9j55jnHObb7YvsnU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/comment/get-comment-by-room/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"get-comment-by-room",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTEwMjgzNywiZXhwIjoxNzQwNjYwNDM3fQ.5IdkIJGpAnblDJ3i_JApR38SpetUZ4S9Sg1wM4jQ5X0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"ma_phong\": 3,\r\n   \"ngay_binh_luan\":\"02-01-2024\",\r\n   \"noi_dung\":\"phong dep\",\r\n   \"sao_binh_luan\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comment/update-comment/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"update-comment",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTEwNDI1NiwiZXhwIjoxNzQwNjYxODU2fQ.RdKAB-8toXro0gTR1T-fjxc9TXEjKJ1CnENe6MNJ9DI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/comment/delete-comment/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"delete-comment",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
